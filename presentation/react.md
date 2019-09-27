@@ -1,6 +1,8 @@
 <img src="assets/react.png" width="128" height="128" style="border: 0; background: none;"/>
 
-### React + TypeScript <!--.element: class="fragment" -->
+### React + TypeScript*** <!--.element: class="fragment" -->
+
+*** just a little bit <!--.element: class="fragment" -->
 
 ---
 
@@ -17,7 +19,8 @@
 ### Expectation management
 
 - Interactive + live coding exercises
-- React + TypeScript
+- React
+- TypeScript (just a little bit)
 - TSX
 - States, Effects, Props
 - Component composition
@@ -180,11 +183,12 @@ Start your project here! ️
 
 ### Exercise 1
 
-- Time
+Create elements for:
+- Time (mm:hh)
 - Start / stop button
 - New lap button
 <center>
-  <img src="assets/stopwatch.png" height="100" style="text-align: center" />
+  <img src="assets/stopwatch.png" height="100" style="text-align: center; margin-top: 20px" />
 </center>
 
 ---
@@ -315,24 +319,56 @@ const App = () => {
 
 ### Exercise 2
 
-Setup state:
+Create getters and setters for:
 
-- The seconds that have passed,
-- The state of the stopwatch: started / stopped,
-- The created laps (hint: this will be an array of numbers)
+- The seconds passed: `number`
+- The stopwatch running state: `boolean`
+- The created laps: `number[]`
 
 ```ts
+const [myState, setMyState] = useState( ... )
+```
 
-const [prop, setProp] = useState( ... )
+---
 
+### `useState` getter
 
+```jsx
+const App = () => {
+  const [buttonDisabled, setButtonDisabled] = useState(false)
+
+  return (
+    <button
+      disabled={buttonDisabled}>
+        Click me!
+    </button>
+  )
+}
+```
+
+---
+
+### `useState` setter
+
+```jsx
+const App = () => {
+  const [buttonDisabled, setButtonDisabled] = useState(false)
+
+  return (
+    <button
+      onClick={() => setButtonDisabled(true)}
+      disabled={buttonDisabled}>
+        Click me!
+    </button>
+  )
+}
 ```
 
 ---
 
 ### Exercise 3
 
-Update the state:
+Use the created setters for:
 
 - When the start/stop button is clicked
 - When the New lap button is clicked
@@ -383,8 +419,8 @@ const App = props => {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    alert('The title prop or isLoading state has changed!')
-  }, [props.title, isLoading])
+    alert('The isLoading state has changed!')
+  }, [isLoading])
 
   return <div>...</div>
 }
@@ -436,7 +472,30 @@ When the stopwatch start button is clicked:
 
 - Start the timer and update the `seconds` state every second
 
-Hint: use `setInterval` here
+Hint: use `setInterval` inside `useEffect` here
+
+---
+
+### Exercise 4 - Example
+
+Start the timer and update the `seconds` state every second
+
+```jsx
+let timer = 0
+const App = () => {
+  const [timerRunning, setTimerRunning] = useState(false)
+  // define your state here...
+
+  useEffect(() => {
+    if (timerRunning) {
+      timer = setInterval(() => {
+        // use your setter here...
+      }, 1000)
+    }
+  }, [timerRunning])
+  ...
+}
+```
 
 ---
 
@@ -446,7 +505,28 @@ When the stopwatch stop button is clicked:
 
 - Stop the timer
 
-Hint: use `clearInterval` here
+Hint: use `clearInterval` inside the same `useEffect` here
+
+---
+
+### Exercise 5 - Example
+
+When the stopwatch stop button is clicked:
+
+```jsx
+let timer = 0
+const App = () => {
+  ...
+  useEffect(() => {
+    if (timerRunning) {
+      ...
+    } else {
+      clearInterval(timer)
+    }
+  }, [timerRunning])
+  ...
+}
+```
 
 ---
 
@@ -457,21 +537,38 @@ When the New lap button is clicked:
 - Add the seconds that are currently in state to the laps state
 - Reset the timer to 0 seconds
 
+Hint: copy the existing array and add a value to it:
+```ts
+[...existingArray, newValue]
+```
+
 ---
 
 ### Exercise 7
 
 - Covert the seconds in state to minutes and seconds and display it on the screen
 
-  Hint: `Math.floor(seconds / 60)` && `seconds % 60`
-
-- Show all the laps on the screen
-
-  Hint: use `.map()` here.
+Hint: `Math.floor(seconds / 60)` && `seconds % 60`
 
 <center>
   <img src="assets/stopwatch2.png" height="150" style="text-align: center" />
 </center>
+
+---
+
+### Exercise 8
+
+- Show all the laps on the screen
+
+Hint: use `.map()` here.
+
+```jsx
+{
+  laps.map((lap, index) => (
+    <div>...</div>
+  ))
+}
+```
 
 ---
 
@@ -581,7 +678,7 @@ type AppProps = {
 }
 ```
 
-```
+```jsx
 <App />
 ```
 
@@ -596,14 +693,6 @@ Type '{}' is not assignable to type 'Readonly<AppProps>'.
 
 
 ```
-
----
-
-### Exercise 7
-
-Split your component up into smaller components and files.
-
-Use props to send information to your components.
 
 ---
 
@@ -638,6 +727,28 @@ const Page: FC = props => (
     <SearchForm />
   </Content>
 </App>
+```
+
+---
+
+### Exercise 9
+
+- Isolate the button code to be its own component and file
+- Import the button component in the main file
+
+```jsx
+// button.ts
+type ButtonProps = {
+  text: string
+  ...
+}
+export const Button = props => (
+  <button>{props.text}</button>
+)
+```
+
+```js
+import { Button } from './button'
 ```
 
 ---
