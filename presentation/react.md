@@ -183,7 +183,7 @@ Start your project here! ️
 
 ### Exercise 1
 
-Create elements for:
+Create static JSX elements for:
 - Time (mm:hh)
 - Start / stop button
 - New lap button
