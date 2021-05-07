@@ -9,7 +9,7 @@
 <div style="display:flex; flex-direction: column; align-items: center;">
   <img src="assets/martin.jpg" width="100" style="border-radius:100%;">
   <h1 style="font-size: 0.9em;">Martin van Dam</h1>
-  <small style="">Frontend Software Engineer @ BZK</small>
+  <small style="">Frontend Software Engineer @ Philips</small>
   <img src="assets/codestar.svg" height="30" style="border: 0; background-color: transparent  " /><br />
   <small>@MrtnvDam<br />martin.van.dam@ordina.nl</small>
 </div>
