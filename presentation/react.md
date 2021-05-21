@@ -60,7 +60,7 @@ Anyone?
 
 ---
 
-### What does it look like?
+### What is a component?
 
 ```jsx
 const App = () => (
@@ -178,12 +178,15 @@ Start your project here! ️
 
 ️➡️ https://stackblitz.com/fork/typescript-react-starter
 
+OR
+
+️➡️ https://codesandbox.io/s/
 
 ---
 
 ### Exercise 1
 
-Create static JSX elements for:
+Create JSX / HTML elements for:
 - Time (mm:hh)
 - Start / stop button
 - New lap button
@@ -193,6 +196,18 @@ Create static JSX elements for:
 
 ---
 
+### Exercise 1 - Hints
+
+```jsx
+<div style={{ backgroundColor: 'blue' }}></div>
+<button>My button</button>
+```
+
+<center>
+  <img src="assets/stopwatch.png" height="100" style="text-align: center; margin-top: 20px" />
+</center>
+
+---
 ### Conditionals
 
 ```jsx
@@ -252,7 +267,7 @@ const App = () => (
 
 - Typesafety inside your views
 - Definitions of your `props` and `state`
-- No need of `PropTypes`
+- No need for `PropTypes`
 
 ---
 
@@ -266,6 +281,8 @@ const App = () => (
 ### State example 0
 
 ```jsx
+import { useState } from 'react'
+
 const App: FC = () => {
   const [username, setUsername] = useState('')
   return (
@@ -285,6 +302,8 @@ const App: FC = () => {
 ### State example 1
 
 ```jsx
+import { useState } from 'react'
+
 const App = () => {
   const [isLoading, setIsLoading] = useState(true)
 
@@ -302,6 +321,8 @@ const App = () => {
 ### State example 2
 
 ```jsx
+import { useState } from 'react'
+
 const App = () => {
   const [user, setUser] = useState<User | false>(false)
 
@@ -386,6 +407,8 @@ Use the created setters for:
 ### On mount
 
 ```jsx
+import { useEffect } from 'react'
+
 const App = () => {
 
   useEffect(() => {
@@ -401,6 +424,8 @@ const App = () => {
 ### On props / state update
 
 ```jsx
+import { useEffect } from 'react'
+
 const App = () => {
 
   useEffect(() => {
@@ -415,6 +440,8 @@ const App = () => {
 ### On specific prop / state update
 
 ```jsx
+import { useState, useEffect } from 'react'
+
 const App = props => {
   const [isLoading, setIsLoading] = useState(true)
 
