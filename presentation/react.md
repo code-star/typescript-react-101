@@ -1,3 +1,7 @@
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="assets/monokai-sublime.css">
+
+
 <img src="assets/react.png" width="128" height="128" style="border: 0; background: none;"/>
 
 ### React + TypeScript*** <!--.element: class="fragment" -->
@@ -6,12 +10,17 @@
 
 ---
 
-<div style="display:flex; flex-direction: column; align-items: center;">
-  <img src="assets/martin.jpg" width="100" style="border-radius:100%;">
+<div style="float: left; width: 45%;">
+  <img src="assets/martin.jpg" width="100" style="border-radius:100%; display: inline-flex;">
   <h1 style="font-size: 0.9em;">Martin van Dam</h1>
-  <small style="">Frontend Software Engineer @ Philips</small>
-  <img src="assets/codestar.svg" height="30" style="border: 0; background-color: transparent  " /><br />
-  <small>@MrtnvDam<br />martin.van.dam@ordina.nl</small>
+<small style="display: inline-flex;">Frontend Engineer @ Min. VWS</small>
+  <small>@MrtnvDam<br />Martin.van.Dam@ordina.nl</small>
+</div>
+<div style="float: right; width: 45%;">
+  <img src="assets/michael.jpg" width="100" style="border-radius:100%; display: inline-flex;">
+  <h1 style="font-size: 0.9em;">Michael Awad</h1>
+  <small style="display: inline-flex;">Practice Lead & Teamlead @ Min. VWS</small>
+   <small>@mikeightyfive<br /> Michael.Awad@ordina.nl</small>
 </div>
 
 ---
@@ -30,17 +39,18 @@
 
 ### ⚠️ Disclaimer
 
-- React v16.8+ ️️️️️☣️
-- Hooks instead of Classes 🏴‍☠️
+- Hooks instead of classic state 🏴‍☠️
 - TSX 💯
 - StackBlitz 🚀
-- Contains some inline styling 🙀 YUK! 🤮
+- Contains some inline styling 🙀
 
 ---
 
 ### What are we going to build?
 
 ☣️ ➡️ [⏱](https://typescript-react-stopwatch-result.stackblitz.io)
+
+[https://typescript-react-stopwatch-result.stackblitz.io](https://typescript-react-stopwatch-result.stackblitz.io)
 
 ---
 
@@ -115,7 +125,7 @@ const App = () => (
 const App = () => (
   <div 
     style={{ textTransform: 'uppercase' }}
-    className={'myClassName'}>
+    className="myClassName">
       ...
   </div>
 )
@@ -129,8 +139,8 @@ const App = () => (
 const buttonDisabled = true
 const App = () => (
   <input
-    type={'button'}
-    value={'Click me!'}
+    type="button"
+    value={'Click me!'} // <- both notations can be used
     disabled={buttonDisabled} />
 )
 ```
@@ -176,7 +186,7 @@ const App = () => (
 
 Start your project here! ️
 
-️➡️ https://stackblitz.com/fork/typescript-react-starter
+️➡️ https://stackblitz.com/fork/react-ts
 
 OR
 
@@ -186,10 +196,11 @@ OR
 
 ### Exercise 1
 
-Create JSX / HTML elements for:
+In `App.tsx`:
+
+Create static HTML / JSX elements for:
 - Time (mm:hh)
 - Start / stop button
-- New lap button
 <center>
   <img src="assets/stopwatch.png" height="100" style="text-align: center; margin-top: 20px" />
 </center>
@@ -197,6 +208,8 @@ Create JSX / HTML elements for:
 ---
 
 ### Exercise 1 - Hints
+
+
 
 ```jsx
 <div style={{ backgroundColor: 'blue' }}></div>
@@ -206,6 +219,22 @@ Create JSX / HTML elements for:
 <center>
   <img src="assets/stopwatch.png" height="100" style="text-align: center; margin-top: 20px" />
 </center>
+
+---
+
+### Exercise 1 - Result
+
+```jsx
+<div>
+  <div style={{ fontWeight: 'bold' }}>00:00</div>
+  <div>
+    <button
+      style={{ backgroundColor: 'hotpink' }}>
+        Start
+    </button>
+  </div>
+</div>
+```
 
 ---
 ### Conditionals
@@ -344,10 +373,18 @@ Create getters and setters for:
 
 - The seconds passed: `number`
 - The stopwatch running state: `boolean`
-- The created laps: `number[]`
 
 ```ts
 const [myState, setMyState] = useState( ... )
+```
+
+---
+
+### Exercise 2 - Result
+
+```ts
+const [seconds, setSeconds] = useState(0)
+const [isRunning, setIsRunning] = useState(false)
 ```
 
 ---
@@ -389,11 +426,20 @@ const App = () => {
 
 ### Exercise 3
 
-Use the created setters for:
+Use the created getters and setters for:
 
 - When the start/stop button is clicked
-- When the New lap button is clicked
 - The text of the start/stop button should depend on the state
+
+---
+
+### Exercise 3 - Result
+
+```jsx
+<button onClick={() => setIsRunning(!isRunning)}>
+  {isRunning ? 'Stop' : 'Start'}
+</button>
+```
 
 ---
 
@@ -409,14 +455,13 @@ Use the created setters for:
 ```jsx
 import { useEffect } from 'react'
 
-const App = () => {
+...
 
-  useEffect(() => {
-    alert('The component is mounted!')
-  }, [])
+useEffect(() => {
+  alert('The component is mounted!')
+}, [])
 
-  return <div>...</div>
-}
+...
 ```
 
 ---
@@ -424,33 +469,30 @@ const App = () => {
 ### On props / state update
 
 ```jsx
-import { useEffect } from 'react'
+...
 
-const App = () => {
+useEffect(() => {
+  alert('The props and/or state has changed!')
+})
 
-  useEffect(() => {
-    alert('The props or state has changed!')
-  })
-
-  return <div>...</div>
-}
+...
 ```
+
+(not recommended)
 ---
 
 ### On specific prop / state update
 
 ```jsx
-import { useState, useEffect } from 'react'
+...
 
-const App = props => {
-  const [isLoading, setIsLoading] = useState(true)
+const [isLoading, setIsLoading] = useState(true)
 
-  useEffect(() => {
-    alert('The isLoading state has changed!')
-  }, [isLoading])
+useEffect(() => {
+  alert('The isLoading state has changed!')
+}, [isLoading])
 
-  return <div>...</div>
-}
+...
 ```
 
 ---
@@ -464,27 +506,6 @@ const App = () => {
 
   useEffect(() => {
     timer = setInterval(() => console.log('tick'), 1000)
-  }, [])
-
-  return <div>...</div>
-}
-```
-
----
-
-### Effect with cleanup
-
-```jsx
-let timer = 0
-
-const App = () => {
-
-  useEffect(() => {
-    timer = setInterval(() => console.log('tick'), 1000)
-
-    return function cleanup() {
-      clearInterval(timer)
-    }
   }, [])
 
   return <div>...</div>
@@ -508,7 +529,7 @@ Hint: use `setInterval` inside `useEffect` here
 Start the timer and update the `seconds` state every second
 
 ```jsx
-let timer = 0
+let timer = 0 // <-- IMPORTANT!
 const App = () => {
   const [timerRunning, setTimerRunning] = useState(false)
   // define your state here...
@@ -531,6 +552,7 @@ const App = () => {
 When the stopwatch stop button is clicked:
 
 - Stop the timer
+- Make sure that the button text reflects the state
 
 Hint: use `clearInterval` inside the same `useEffect` here
 
@@ -559,20 +581,6 @@ const App = () => {
 
 ### Exercise 6
 
-When the New lap button is clicked:
-
-- Add the seconds that are currently in state to the laps state
-- Reset the timer to 0 seconds
-
-Hint: copy the existing array and add a value to it:
-```ts
-[...existingArray, newValue]
-```
-
----
-
-### Exercise 7
-
 - Covert the seconds in state to minutes and seconds and display it on the screen
 
 Hint: `Math.floor(seconds / 60)` && `seconds % 60`
@@ -583,28 +591,12 @@ Hint: `Math.floor(seconds / 60)` && `seconds % 60`
 
 ---
 
-### Exercise 8
-
-- Show all the laps on the screen
-
-Hint: use `.map()` here.
-
-```jsx
-{
-  laps.map((lap, index) => (
-    <div>...</div>
-  ))
-}
-```
-
----
-
 ### Props
 
 Pass information to your components:
 
 ```jsx
-<App title={'App title'} />
+<App title="App title" />
 ```
 
 ---
@@ -612,12 +604,18 @@ Pass information to your components:
 Or using a variable:
 
 ```jsx
+const appTitle = 'App title'
+
 <App title={appTitle} />
 ```
 
 ---
 
 Access Props inside the receiving component:
+
+```jsx
+<App title="Hi" />
+```
 
 ```jsx
 const App = props => (
@@ -629,7 +627,7 @@ const App = props => (
 
 ---
 
-### But wait... what is props.?
+### But wait... what is inside my props...?
 
 ### I'm missing types here!
 
@@ -651,7 +649,7 @@ type AppProps = {
 And use inside your component:
 
 ```jsx
-const App: FC<AppProps> = props => (
+const App: FC<AppProps> = (props) => (
   <div>
     <div>{props.title}</div>
     <div>{props.username}</div> /* Error! */
@@ -665,7 +663,7 @@ More about this later!
 
 ---
 
-### Functions / callbacks as prop
+### Callback props
 
 ```ts
 type AppProps = {
@@ -726,7 +724,7 @@ Type '{}' is not assignable to type 'Readonly<AppProps>'.
 ### Children
 
 ```jsx
-const Page: FC = props => (
+const Page: FC = (props) => (
   <div>
     {props.children}
   </div>
@@ -735,9 +733,7 @@ const Page: FC = props => (
 
 ```jsx
 <Page>
-  <div>
-    I'm the child
-  </div>
+  <div>I'm the child!</div>
 </Page>
 ```
 
@@ -758,10 +754,16 @@ const Page: FC = props => (
 
 ---
 
-### Exercise 9
+### Exercise 7
 
-- Isolate the button code to be its own component and file
+- Create new file `Button.tsx`
+- Create a Button component and put the button code into it
 - Import the button component in the main file
+- Make it reusable
+
+---
+
+### Exercise 7 - Example
 
 ```jsx
 // button.ts
@@ -779,6 +781,41 @@ import { Button } from './button'
 ```
 
 ---
+
+### Exercise 8: Bonus
+
+1. Create a new button to start a new lap
+2. When the New lap button is clicked:
+  - Add the seconds that are currently in state to the laps state
+  - Reset the timer to 0 seconds
+
+Hint: copy the existing array and add a value to it:
+
+```ts
+const [seconds, setSeconds] = useState(0);
+const [laps, setLaps] = useState<number[]>([]);
+setLaps([...laps, seconds])
+```
+
+---
+
+### Exercise 9: Bonus
+
+- Show all the laps on the screen
+
+Hint: use `.map()` here.
+
+```jsx
+{
+  laps.map((lap, index) => (
+    <div>...</div>
+  ))
+}
+```
+
+---
+
+
 
 ### Container vs. Presentational Component
 
