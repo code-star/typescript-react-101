@@ -17,10 +17,10 @@
   <small>@MrtnvDam<br />Martin.van.Dam@ordina.nl</small>
 </div>
 <div style="float: right; width: 45%;">
-  <img src="assets/michael.jpg" width="100" style="border-radius:100%; display: inline-flex;">
-  <h1 style="font-size: 0.9em;">Michael Awad</h1>
-  <small style="display: inline-flex;">Practice Lead & Teamlead @ Min. VWS</small>
-   <small>@mikeightyfive<br /> Michael.Awad@ordina.nl</small>
+  <img src="assets/corneel.jpg" width="100" height="100" style="object-fit:cover; object-position:0 0; border-radius:100%; display: inline-flex;">
+  <h1 style="font-size: 0.9em;">Corneel Eijsbouts</h1>
+  <small style="display: inline-flex;">Software Developer @ Min. VWS</small>
+  <small>&nbsp;<br /> Corneel.Eijsbouts@ordina.nl</small>
 </div>
 
 ---
