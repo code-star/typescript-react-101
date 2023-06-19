@@ -371,7 +371,7 @@ const App = () => {
 
 Create getters and setters for:
 
-- The seconds passed: `number`
+- The elapsed time: `number`
 - The stopwatch running state: `boolean`
 
 ```ts
@@ -383,7 +383,7 @@ const [myState, setMyState] = useState( ... )
 ### Exercise 2 - Result
 
 ```ts
-const [seconds, setSeconds] = useState(0)
+const [elapsedTime, setElapsedTime] = useState(0)
 const [isRunning, setIsRunning] = useState(false)
 ```
 
@@ -516,29 +516,30 @@ const App = () => {
 
 ### Exercise 4
 
-When the stopwatch start button is clicked:
+When the stopwatch button is clicked:
 
-- Start the timer and update the `seconds` state every second
+- Start: store the current moment as `startMoment`
+- Stop: display the elapsed time 
 
-Hint: use `setInterval` inside `useEffect` here
+Hint: use `Date.now()` inside `useEffect`
 
 ---
 
-### Exercise 4 - Example
+### Exercise 4 - Result
 
-Start the timer and update the `seconds` state every second
+Update the states every time `timerRunning` updates
 
 ```jsx
-let timer = 0 // <-- IMPORTANT!
 const App = () => {
   const [timerRunning, setTimerRunning] = useState(false)
-  // define your state here...
+  const [startMoment, setStartMoment] = useState(0)
+  const [elapsedTime, setElapsedTime] = useState(0)
 
   useEffect(() => {
     if (timerRunning) {
-      timer = setInterval(() => {
-        // use your setter here...
-      }, 1000)
+      setStartMoment(Date.now())
+    } else {
+      setElapsedTime(Date.now() - startMoment)
     }
   }, [timerRunning])
   ...
@@ -549,41 +550,11 @@ const App = () => {
 
 ### Exercise 5
 
-When the stopwatch stop button is clicked:
+- Convert the milliseconds in state to minutes and seconds and display it on the screen
 
-- Stop the timer
-- Make sure that the button text reflects the state
-
-Hint: use `clearInterval` inside the same `useEffect` here
-
----
-
-### Exercise 5 - Example
-
-When the stopwatch stop button is clicked:
-
-```jsx
-let timer = 0
-const App = () => {
-  ...
-  useEffect(() => {
-    if (timerRunning) {
-      ...
-    } else {
-      clearInterval(timer)
-    }
-  }, [timerRunning])
-  ...
-}
-```
-
----
-
-### Exercise 6
-
-- Covert the seconds in state to minutes and seconds and display it on the screen
-
-Hint: `Math.floor(seconds / 60)` && `seconds % 60`
+Hints:
+ - `Math.floor((ms / 1000) / 60)`
+ - `Math.floor((ms / 1000) % 60)`
 
 <center>
   <img src="assets/stopwatch2.png" height="150" style="text-align: center" />
@@ -754,7 +725,7 @@ const Page: FC = (props) => (
 
 ---
 
-### Exercise 7
+### Exercise 6
 
 - Create new file `Button.tsx`
 - Create a Button component and put the button code into it
@@ -763,7 +734,7 @@ const Page: FC = (props) => (
 
 ---
 
-### Exercise 7 - Example
+### Exercise 6 - Example
 
 ```jsx
 // button.ts
@@ -782,24 +753,25 @@ import { Button } from './button'
 
 ---
 
-### Exercise 8: Bonus
+### Exercise 7: Bonus
 
 1. Create a new button to start a new lap
-2. When the New lap button is clicked:
-  - Add the seconds that are currently in state to the laps state
-  - Reset the timer to 0 seconds
+2. When the New lap button is clicked:<br />
+   - Use `lastLapMoment` to populate `laps`
 
 Hint: copy the existing array and add a value to it:
 
 ```ts
-const [seconds, setSeconds] = useState(0);
-const [laps, setLaps] = useState<number[]>([]);
-setLaps([...laps, seconds])
+const [lastLapMoment, setLastLapMoment] = useState(0)
+const [laps, setLaps] = useState<number[]>([])
+setLaps([...laps, Date.now() - lastLapMoment])
 ```
+
+Hint: use `setLastLapMoment` on start as well
 
 ---
 
-### Exercise 9: Bonus
+### Exercise 8: Bonus
 
 - Show all the laps on the screen
 
@@ -810,6 +782,72 @@ Hint: use `.map()` here.
   laps.map((lap, index) => (
     <div>...</div>
   ))
+}
+```
+
+---
+
+### Exercise 9: BONUS
+
+When the stopwatch is running:
+
+- Update the elapsed time every second
+
+Hint: use `setInterval` inside `useEffect` here
+
+---
+
+### Exercise 9 - Example
+
+Update the elapsed time every second
+
+```jsx
+let timer = 0 // <-- IMPORTANT!
+
+const App = () => {
+  const [timerRunning, setTimerRunning] = useState(false)
+  // define more state here...
+
+  useEffect(() => {
+    if (timerRunning) {
+      timer = setInterval(() => {
+        // use your setter here...
+      }, 1000)
+    }
+  }, [timerRunning])
+  ...
+}
+```
+
+---
+
+### Exercise 10: BONUS
+
+When the stopwatch stop button is clicked:
+
+- Stop the timer
+- Make sure that the button text reflects the state
+
+Hint: use `clearInterval` inside the same `useEffect` here
+
+---
+
+### Exercise 10 - Example
+
+When the stopwatch stop button is clicked:
+
+```jsx
+let timer = 0
+const App = () => {
+  ...
+  useEffect(() => {
+    if (timerRunning) {
+      ...
+    } else {
+      clearInterval(timer)
+    }
+  }, [timerRunning])
+  ...
 }
 ```
 
