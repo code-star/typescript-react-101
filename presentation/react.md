@@ -199,7 +199,7 @@ OR
 In `App.tsx`:
 
 Create static HTML / JSX elements for:
-- Time (mm:hh)
+- Time (mm:ss)
 - Start / stop button
 <center>
   <img src="assets/stopwatch.png" height="100" style="text-align: center; margin-top: 20px" />
@@ -737,13 +737,13 @@ const Page: FC = (props) => (
 ### Exercise 6 - Example
 
 ```jsx
-// button.ts
+// Button.tsx
 type ButtonProps = {
-  text: string
+  label: string
   ...
 }
 export const Button = props => (
-  <button>{props.text}</button>
+  <button>{props.label}</button>
 )
 ```
 
