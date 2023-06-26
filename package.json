@@ -6,7 +6,8 @@
   "scripts": {
     "start": "npm run reveal",
     "reveal": "reveal-md presentation/react.md -w",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "solution": "cd ./solution && npm install && npm run dev"
   },
   "repository": {
     "type": "git",
