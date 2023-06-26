@@ -1,19 +1,18 @@
 <!-- For syntax highlighting -->
 <link rel="stylesheet" href="assets/monokai-sublime.css">
 
-
 <img src="assets/react.png" width="128" height="128" style="border: 0; background: none;"/>
 
-### React + TypeScript*** <!--.element: class="fragment" -->
+### React + TypeScript\*\*\* <!--.element: class="fragment" -->
 
-*** just a little bit <!--.element: class="fragment" -->
+\*\*\* just a little bit <!--.element: class="fragment" -->
 
 ---
 
 <div style="float: left; width: 45%;">
   <img src="assets/martin.jpg" width="100" style="border-radius:100%; display: inline-flex;">
   <h1 style="font-size: 0.9em;">Martin van Dam</h1>
-<small style="display: inline-flex;">Frontend Engineer @ Min. VWS</small>
+<small style="display: inline-flex;">Frontend Engineer @ Port of Rotterdam</small>
   <small>@MrtnvDam<br />Martin.van.Dam@ordina.nl</small>
 </div>
 <div style="float: right; width: 45%;">
@@ -55,6 +54,7 @@
 ---
 
 ### ⚠️ But first: What is React?
+
 Anyone?
 
 ---
@@ -73,11 +73,7 @@ Anyone?
 ### What is a component?
 
 ```jsx
-const App = () => (
-  <div>
-    My App
-  </div>
-)
+const App = () => <div>My App</div>;
 ```
 
 ---
@@ -109,12 +105,8 @@ const App = () => (
 Use regular JavaScript between `{` ... `}`:
 
 ```jsx
-const myVariable = 'Some value'
-const App = () => (
-  <div>
-    My variable uppercase: {myVariable.toUpperCase()}
-  </div>
-)
+const myVariable = "Some value";
+const App = () => <div>My variable uppercase: {myVariable.toUpperCase()}</div>;
 ```
 
 ---
@@ -123,12 +115,10 @@ const App = () => (
 
 ```jsx
 const App = () => (
-  <div 
-    style={{ textTransform: 'uppercase' }}
-    className="myClassName">
-      ...
+  <div style={{ textTransform: "uppercase" }} className="myClassName">
+    ...
   </div>
-)
+);
 ```
 
 ---
@@ -136,13 +126,14 @@ const App = () => (
 ### Native element properties
 
 ```jsx
-const buttonDisabled = true
+const buttonDisabled = true;
 const App = () => (
   <input
     type="button"
-    value={'Click me!'} // <- both notations can be used
-    disabled={buttonDisabled} />
-)
+    value={"Click me!"} // <- both notations can be used
+    disabled={buttonDisabled}
+  />
+);
 ```
 
 ---
@@ -152,13 +143,9 @@ const App = () => (
 Using normal CSS
 
 ```jsx
-import classes from './styles.css'
+import classes from "./styles.css";
 
-const App = () => (
-  <div className={classes.myClassName}>
-      ...
-  </div>
-)
+const App = () => <div className={classes.myClassName}>...</div>;
 ```
 
 ---
@@ -169,13 +156,15 @@ Using CSS-in-JS
 
 ```jsx
 const App = () => (
-  <div style={{
-      fontSize: '18px',
-      backgroundColor: 'green'
-    }}>
-      ...
+  <div
+    style={{
+      fontSize: "18px",
+      backgroundColor: "green",
+    }}
+  >
+    ...
   </div>
-)
+);
 ```
 
 <small>(not recommended, but easy to start with)</small>
@@ -199,6 +188,7 @@ OR
 In `App.tsx`:
 
 Create static HTML / JSX elements for:
+
 - Time (mm:ss)
 - Start / stop button
 <center>
@@ -208,8 +198,6 @@ Create static HTML / JSX elements for:
 ---
 
 ### Exercise 1 - Hints
-
-
 
 ```jsx
 <div style={{ backgroundColor: 'blue' }}></div>
@@ -226,26 +214,20 @@ Create static HTML / JSX elements for:
 
 ```jsx
 <div>
-  <div style={{ fontWeight: 'bold' }}>00:00</div>
+  <div style={{ fontWeight: "bold" }}>00:00</div>
   <div>
-    <button
-      style={{ backgroundColor: 'hotpink' }}>
-        Start
-    </button>
+    <button style={{ backgroundColor: "hotpink" }}>Start</button>
   </div>
 </div>
 ```
 
 ---
+
 ### Conditionals
 
 ```jsx
-const isEnabled = true
-const App = () => (
-  <div>
-    { isEnabled ? 'Enabled' : 'Disabled' }
-  </div>
-)
+const isEnabled = true;
+const App = () => <div>{isEnabled ? "Enabled" : "Disabled"}</div>;
 ```
 
 ---
@@ -253,16 +235,14 @@ const App = () => (
 ### Iterations
 
 ```jsx
-const animals = ['cat', 'dog']
+const animals = ["cat", "dog"];
 const App = () => (
   <div>
-      {
-        animals.map((animal, index) => (
-          <div key={index}>{animal}</div>
-        ))
-      }
+    {animals.map((animal, index) => (
+      <div key={index}>{animal}</div>
+    ))}
   </div>
-)
+);
 ```
 
 ---
@@ -278,16 +258,14 @@ const App = () => (
 ### JSX + TypeScript = TSX
 
 ```jsx
-const animals: string[] = ['cat', 'dog']
+const animals: string[] = ["cat", "dog"];
 const App = () => (
   <div>
-      {
-        animals.map((animal: string, index: number) => (
-          <div key={index}>{animal}</div>
-        ))
-      }
+    {animals.map((animal: string, index: number) => (
+      <div key={index}>{animal}</div>
+    ))}
   </div>
-)
+);
 ```
 
 ---
@@ -310,20 +288,20 @@ const App = () => (
 ### State example 0
 
 ```jsx
-import { useState } from 'react'
+import { useState } from "react";
 
 const App: FC = () => {
-  const [username, setUsername] = useState('')
+  const [username, setUsername] = useState("");
   return (
     <div>
       <input
-        type={'text'}
+        type={"text"}
         value={username}
-        onChange={event => setUsername(event.target.value)}
+        onChange={(event) => setUsername(event.target.value)}
       />
     </div>
-  )
-}
+  );
+};
 ```
 
 ---
@@ -331,18 +309,18 @@ const App: FC = () => {
 ### State example 1
 
 ```jsx
-import { useState } from 'react'
+import { useState } from "react";
 
 const App = () => {
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
 
-  setTimeout(() => setIsLoading(false), 5000)
+  setTimeout(() => setIsLoading(false), 5000);
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
-  return <div>Loading complete!</div>
-}
+  return <div>Loading complete!</div>;
+};
 ```
 
 ---
@@ -350,19 +328,18 @@ const App = () => {
 ### State example 2
 
 ```jsx
-import { useState } from 'react'
+import { useState } from "react";
 
 const App = () => {
-  const [user, setUser] = useState<User | false>(false)
+  const [user, setUser] = (useState < User) | (false > false);
 
-  fetchUser()
-    .then((user: User) => setUser(user))
+  fetchUser().then((user: User) => setUser(user));
 
   if (!user) {
-    return <div>Loading user...</div>
+    return <div>Loading user...</div>;
   }
-  return <div>Username: {user.name}</div>
-}
+  return <div>Username: {user.name}</div>;
+};
 ```
 
 ---
@@ -383,8 +360,8 @@ const [myState, setMyState] = useState( ... )
 ### Exercise 2 - Result
 
 ```ts
-const [elapsedTime, setElapsedTime] = useState(0)
-const [isRunning, setIsRunning] = useState(false)
+const [elapsedTime, setElapsedTime] = useState(0);
+const [isRunning, setIsRunning] = useState(false);
 ```
 
 ---
@@ -393,15 +370,10 @@ const [isRunning, setIsRunning] = useState(false)
 
 ```jsx
 const App = () => {
-  const [buttonDisabled, setButtonDisabled] = useState(false)
+  const [buttonDisabled, setButtonDisabled] = useState(false);
 
-  return (
-    <button
-      disabled={buttonDisabled}>
-        Click me!
-    </button>
-  )
-}
+  return <button disabled={buttonDisabled}>Click me!</button>;
+};
 ```
 
 ---
@@ -410,16 +382,14 @@ const App = () => {
 
 ```jsx
 const App = () => {
-  const [buttonDisabled, setButtonDisabled] = useState(false)
+  const [buttonDisabled, setButtonDisabled] = useState(false);
 
   return (
-    <button
-      onClick={() => setButtonDisabled(true)}
-      disabled={buttonDisabled}>
-        Click me!
+    <button onClick={() => setButtonDisabled(true)} disabled={buttonDisabled}>
+      Click me!
     </button>
-  )
-}
+  );
+};
 ```
 
 ---
@@ -437,7 +407,7 @@ Use the created getters and setters for:
 
 ```jsx
 <button onClick={() => setIsRunning(!isRunning)}>
-  {isRunning ? 'Stop' : 'Start'}
+  {isRunning ? "Stop" : "Start"}
 </button>
 ```
 
@@ -478,8 +448,7 @@ useEffect(() => {
 ...
 ```
 
-(not recommended)
----
+## (not recommended)
 
 ### On specific prop / state update
 
@@ -500,16 +469,15 @@ useEffect(() => {
 ### What happens here?
 
 ```jsx
-let timer = 0
+let timer = 0;
 
 const App = () => {
-
   useEffect(() => {
-    timer = setInterval(() => console.log('tick'), 1000)
-  }, [])
+    timer = setInterval(() => console.log("tick"), 1000);
+  }, []);
 
-  return <div>...</div>
-}
+  return <div>...</div>;
+};
 ```
 
 ---
@@ -519,7 +487,7 @@ const App = () => {
 When the stopwatch button is clicked:
 
 - Start: store the current moment as `startMoment`
-- Stop: display the elapsed time 
+- Stop: display the elapsed time
 
 Hint: use `Date.now()` inside `useEffect`
 
@@ -553,8 +521,9 @@ const App = () => {
 - Convert the milliseconds in state to minutes and seconds and display it on the screen
 
 Hints:
- - `Math.floor((ms / 1000) / 60)`
- - `Math.floor((ms / 1000) % 60)`
+
+- `Math.floor((ms / 1000) / 60)`
+- `Math.floor((ms / 1000) % 60)`
 
 <center>
   <img src="assets/stopwatch2.png" height="150" style="text-align: center" />
@@ -589,11 +558,7 @@ Access Props inside the receiving component:
 ```
 
 ```jsx
-const App = props => (
-  <div>
-    {props.title}
-  </div>
-)
+const App = (props) => <div>{props.title}</div>;
 ```
 
 ---
@@ -610,9 +575,9 @@ Define the type of your props:
 
 ```ts
 type AppProps = {
-  title: string
-  isloading: boolean
-}
+  title: string;
+  isloading: boolean;
+};
 ```
 
 ---
@@ -625,7 +590,7 @@ const App: FC<AppProps> = (props) => (
     <div>{props.title}</div>
     <div>{props.username}</div> /* Error! */
   </div>
-)
+);
 ```
 
 `FC === FunctionComponent`
@@ -638,16 +603,16 @@ More about this later!
 
 ```ts
 type AppProps = {
-  onLogin: () => void
-}
+  onLogin: () => void;
+};
 ```
 
 ```jsx
-const App: FC<AppProps> = props => (
+const App: FC<AppProps> = (props) => (
   <div>
     <button onClick={props.onLogin}>Login!</button>
   </div>
-)
+);
 ```
 
 ---
@@ -657,7 +622,7 @@ const App: FC<AppProps> = props => (
 ```jsx
 const onLogin = () => {
   // some magic happens
-}
+};
 ```
 
 ```jsx
@@ -670,8 +635,8 @@ const onLogin = () => {
 
 ```ts
 type AppProps = {
-  title: string
-}
+  title: string;
+};
 ```
 
 ```jsx
@@ -695,11 +660,7 @@ Type '{}' is not assignable to type 'Readonly<AppProps>'.
 ### Children
 
 ```jsx
-const Page: FC = (props) => (
-  <div>
-    {props.children}
-  </div>
-)
+const Page: FC = (props) => <div>{props.children}</div>;
 ```
 
 ```jsx
@@ -748,7 +709,7 @@ export const Button = props => (
 ```
 
 ```js
-import { Button } from './button'
+import { Button } from "./button";
 ```
 
 ---
@@ -762,9 +723,9 @@ import { Button } from './button'
 Hint: copy the existing array and add a value to it:
 
 ```ts
-const [lastLapMoment, setLastLapMoment] = useState(0)
-const [laps, setLaps] = useState<number[]>([])
-setLaps([...laps, Date.now() - lastLapMoment])
+const [lastLapMoment, setLastLapMoment] = useState(0);
+const [laps, setLaps] = useState<number[]>([]);
+setLaps([...laps, Date.now() - lastLapMoment]);
 ```
 
 Hint: use `setLastLapMoment` on start as well
@@ -779,9 +740,7 @@ Hint: use `.map()` here.
 
 ```jsx
 {
-  laps.map((lap, index) => (
-    <div>...</div>
-  ))
+  laps.map((lap, index) => <div>...</div>);
 }
 ```
 
@@ -853,8 +812,6 @@ const App = () => {
 
 ---
 
-
-
 ### Container vs. Presentational Component
 
 Or: smart vs. dumb
@@ -899,7 +856,7 @@ https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0
 Props
 
 ```jsx
-const App: FC<Props> = props => <div>{props.title}</div>
+const App: FC<Props> = (props) => <div>{props.title}</div>;
 ```
 
 ```jsx
@@ -917,14 +874,13 @@ class App extends React.Component<Props> {
 On mount & State
 
 ```jsx
-const App: FC<Props> = props => {
-  const [user, setUser] = useState(false)
+const App: FC<Props> = (props) => {
+  const [user, setUser] = useState(false);
 
   useEffect(() => {
-    fetchUser()
-      .then(user => setUser(user))
-  }, [])
-}
+    fetchUser().then((user) => setUser(user));
+  }, []);
+};
 ```
 
 ---
@@ -979,7 +935,6 @@ class App extends React.Component<Props, State> {
 ---
 
 ### 🙌 Thanks 🙌
-
 
 Questions anyone?
 
