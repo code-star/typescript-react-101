@@ -7,3 +7,7 @@ npm run reveal
 ```
 
 See the [presentation](./presentation/react.md) for more info.
+
+## Endresult
+
+See https://code-star.github.io/typescript-react-101/.
