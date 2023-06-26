@@ -1,9 +1,9 @@
-import React, { FC, useState, useEffect } from 'react';
-import { Button, Time, Laps, Container, Actions } from '../components';
+import { useState, useEffect } from "react";
+import { Button, Time, Laps, Container, Actions } from "../components";
 
 let interval = 0;
 
-export const Stopwatch: FC = () => {
+export const Stopwatch = () => {
   const [seconds, setSeconds] = useState(0);
   const [laps, setLaps] = useState<number[]>([]);
   const [isRunning, setIsRunning] = useState(false);
@@ -25,18 +25,18 @@ export const Stopwatch: FC = () => {
 
   return (
     <Container>
-      <Time seconds={seconds} size={'large'} />
+      <Time seconds={seconds} size={"large"} />
       <Actions>
         <Button
-          backgroundColor={isRunning ? 'red' : 'lightgreen'}
-          color={isRunning ? 'white' : 'black'}
-          text={isRunning ? 'Stop' : 'Start'}
+          backgroundColor={isRunning ? "red" : "lightgreen"}
+          color={isRunning ? "white" : "black"}
+          text={isRunning ? "Stop" : "Start"}
           onClick={() => setIsRunning(!isRunning)}
         />
         <Button
-          backgroundColor={'lightblue'}
-          color={'black'}
-          text={'New lap'}
+          backgroundColor={"lightblue"}
+          color={"black"}
+          text={"New lap"}
           onClick={onNewLap}
         />
       </Actions>

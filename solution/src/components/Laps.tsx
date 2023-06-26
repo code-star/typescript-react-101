@@ -1,16 +1,13 @@
-import React, { FC } from 'react'
-import { Lap } from './Lap'
+import { Lap } from "./Lap";
 
 type LapsProps = {
-  laps: number[]
-}
+  laps: number[];
+};
 
-export const Laps: FC<LapsProps> = ({ laps }) => (
+export const Laps = ({ laps }: LapsProps) => (
   <div>
-    {
-      laps.map((lapSeconds: number, index: number) => (
-        <Lap key={index} lapNumber={index+1} seconds={lapSeconds} />
-      ))
-    }
+    {laps.map((lapSeconds: number, index: number) => (
+      <Lap key={index} lapNumber={index + 1} seconds={lapSeconds} />
+    ))}
   </div>
-)
+);

@@ -1,7 +1,9 @@
-import React, { FC } from 'react'
+type Props = {
+  children?: React.ReactNode;
+};
 
-export const Container: FC = ({ children }) => (
-  <div style={{ textAlign: 'center', fontFamily: 'Avenir, Helvetica, Arial' }}>
+export const Container = ({ children }: Props) => (
+  <div style={{ textAlign: "center", fontFamily: "Avenir, Helvetica, Arial" }}>
     {children}
   </div>
-)
+);

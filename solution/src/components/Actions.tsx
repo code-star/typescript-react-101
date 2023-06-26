@@ -1,7 +1,7 @@
-import React, { FC } from 'react'
+type Props = {
+  children?: React.ReactNode;
+};
 
-export const Actions: FC = ({ children }) => (
-  <div style={{ display: 'flex', justifyContent: 'center' }}>
-    {children}
-  </div>
-)
+export const Actions = ({ children }: Props) => (
+  <div style={{ display: "flex", justifyContent: "center" }}>{children}</div>
+);
