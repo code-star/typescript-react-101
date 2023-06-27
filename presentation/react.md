@@ -73,7 +73,9 @@ Anyone?
 ### What is a component?
 
 ```jsx
-const App = () => <div>My App</div>;
+const App = () => (
+  <div>My App</div>
+)
 ```
 
 ---
@@ -105,8 +107,12 @@ const App = () => <div>My App</div>;
 Use regular JavaScript between `{` ... `}`:
 
 ```jsx
-const myVariable = "Some value";
-const App = () => <div>My variable uppercase: {myVariable.toUpperCase()}</div>;
+const myVariable = "Some value"
+const App = () => (
+  <div>
+    My variable uppercase: {myVariable.toUpperCase()}
+  </div>
+)
 ```
 
 ---
@@ -115,10 +121,12 @@ const App = () => <div>My variable uppercase: {myVariable.toUpperCase()}</div>;
 
 ```jsx
 const App = () => (
-  <div style={{ textTransform: "uppercase" }} className="myClassName">
-    ...
+  <div
+    style={{ textTransform: "uppercase" }}
+    className="myClassName">
+      ...
   </div>
-);
+)
 ```
 
 ---
@@ -126,14 +134,14 @@ const App = () => (
 ### Native element properties
 
 ```jsx
-const buttonDisabled = true;
+const buttonDisabled = true
 const App = () => (
   <input
     type="button"
     value={"Click me!"} // <- both notations can be used
     disabled={buttonDisabled}
   />
-);
+)
 ```
 
 ---
@@ -143,9 +151,11 @@ const App = () => (
 Using normal CSS
 
 ```jsx
-import classes from "./styles.css";
+import classes from "./styles.css"
 
-const App = () => <div className={classes.myClassName}>...</div>;
+const App = () => (
+  <div className={classes.myClassName}>...</div>
+)
 ```
 
 ---
@@ -164,7 +174,7 @@ const App = () => (
   >
     ...
   </div>
-);
+)
 ```
 
 <small>(not recommended, but easy to start with)</small>
@@ -180,6 +190,10 @@ Start your project here! ️
 OR
 
 ️➡️ https://codesandbox.io/s/
+
+...
+
+Cheatsheets: [Javascript](https://htmlcheatsheet.com/js/), [TypeScript](https://www.typescriptlang.org/cheatsheets)
 
 ---
 
@@ -216,7 +230,9 @@ Create static HTML / JSX elements for:
 <div>
   <div style={{ fontWeight: "bold" }}>00:00</div>
   <div>
-    <button style={{ backgroundColor: "hotpink" }}>Start</button>
+    <button style={{ backgroundColor: "hotpink" }}>
+      Start
+    </button>
   </div>
 </div>
 ```
@@ -226,8 +242,13 @@ Create static HTML / JSX elements for:
 ### Conditionals
 
 ```jsx
-const isEnabled = true;
-const App = () => <div>{isEnabled ? "Enabled" : "Disabled"}</div>;
+const isEnabled = true
+
+const App = () => (
+  <div>
+    {isEnabled ? "Enabled" : "Disabled"}
+  </div>
+)
 ```
 
 ---
@@ -235,14 +256,14 @@ const App = () => <div>{isEnabled ? "Enabled" : "Disabled"}</div>;
 ### Iterations
 
 ```jsx
-const animals = ["cat", "dog"];
+const animals = ["cat", "dog"]
 const App = () => (
   <div>
     {animals.map((animal, index) => (
       <div key={index}>{animal}</div>
     ))}
   </div>
-);
+)
 ```
 
 ---
@@ -258,14 +279,14 @@ const App = () => (
 ### JSX + TypeScript = TSX
 
 ```jsx
-const animals: string[] = ["cat", "dog"];
+const animals: string[] = ["cat", "dog"]
 const App = () => (
   <div>
     {animals.map((animal: string, index: number) => (
       <div key={index}>{animal}</div>
     ))}
   </div>
-);
+)
 ```
 
 ---
@@ -288,10 +309,10 @@ const App = () => (
 ### State example 0
 
 ```jsx
-import { useState } from "react";
+import { useState } from "react"
 
 const App: FC = () => {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState("")
   return (
     <div>
       <input
@@ -300,8 +321,8 @@ const App: FC = () => {
         onChange={(event) => setUsername(event.target.value)}
       />
     </div>
-  );
-};
+  )
+}
 ```
 
 ---
@@ -309,18 +330,18 @@ const App: FC = () => {
 ### State example 1
 
 ```jsx
-import { useState } from "react";
+import { useState } from "react"
 
 const App = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true)
 
-  setTimeout(() => setIsLoading(false), 5000);
+  setTimeout(() => setIsLoading(false), 5000)
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>
   }
-  return <div>Loading complete!</div>;
-};
+  return <div>Loading complete!</div>
+}
 ```
 
 ---
@@ -328,18 +349,18 @@ const App = () => {
 ### State example 2
 
 ```jsx
-import { useState } from "react";
+import { useState } from "react"
 
 const App = () => {
-  const [user, setUser] = (useState < User) | (false > false);
+  const [user, setUser] = useState<User | false>(false)
 
-  fetchUser().then((user: User) => setUser(user));
+  fetchUser().then((user: User) => setUser(user))
 
   if (!user) {
-    return <div>Loading user...</div>;
+    return <div>Loading user...</div>
   }
-  return <div>Username: {user.name}</div>;
-};
+  return <div>Username: {user.name}</div>
+}
 ```
 
 ---
@@ -361,9 +382,9 @@ const [myState, setMyState] = useState( ... )
 ### Exercise 2 - Result
 
 ```ts
-const [elapsedTime, setElapsedTime] = useState(0);
-const [startMoment, setStartMoment] = useState(0);
-const [timerRunning, setTimerRunning] = useState(false);
+const [elapsedTime, setElapsedTime] = useState(0)
+const [startMoment, setStartMoment] = useState(0)
+const [timerRunning, setTimerRunning] = useState(false)
 ```
 
 ---
@@ -372,10 +393,10 @@ const [timerRunning, setTimerRunning] = useState(false);
 
 ```jsx
 const App = () => {
-  const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [buttonDisabled, setButtonDisabled] = useState(false)
 
-  return <button disabled={buttonDisabled}>Click me!</button>;
-};
+  return <button disabled={buttonDisabled}>Click me!</button>
+}
 ```
 
 ---
@@ -384,14 +405,16 @@ const App = () => {
 
 ```jsx
 const App = () => {
-  const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [buttonDisabled, setButtonDisabled] = useState(false)
 
   return (
-    <button onClick={() => setButtonDisabled(true)} disabled={buttonDisabled}>
-      Click me!
+    <button
+      onClick={() => setButtonDisabled(true)}
+      disabled={buttonDisabled}>
+        Click me!
     </button>
-  );
-};
+  )
+}
 ```
 
 ---
@@ -440,7 +463,7 @@ useEffect(() => {
 
 ### On props / state update
 
-> (not recommended)
+<small>(not recommended)</small>
 
 ```jsx
 ...
@@ -451,6 +474,8 @@ useEffect(() => {
 
 ...
 ```
+
+---
 
 ### On specific prop / state update
 
@@ -471,15 +496,15 @@ useEffect(() => {
 ### What happens here?
 
 ```jsx
-let timer = 0;
+let timer = 0
 
 const App = () => {
   useEffect(() => {
-    timer = setInterval(() => console.log("tick"), 1000);
-  }, []);
+    timer = setInterval(() => console.log("tick"), 1000)
+  }, [])
 
-  return <div>...</div>;
-};
+  return <div>...</div>
+}
 ```
 
 ---
@@ -560,7 +585,9 @@ Access Props inside the receiving component:
 ```
 
 ```jsx
-const App = (props) => <div>{props.title}</div>;
+const App = (props) => (
+  <div>{props.title}</div>
+)
 ```
 
 ---
@@ -577,9 +604,9 @@ Define the type of your props:
 
 ```ts
 type AppProps = {
-  title: string;
-  isloading: boolean;
-};
+  title: string
+  isloading: boolean
+}
 ```
 
 ---
@@ -592,7 +619,7 @@ const App: FC<AppProps> = (props) => (
     <div>{props.title}</div>
     <div>{props.username}</div> /* Error! */
   </div>
-);
+)
 ```
 
 `FC === FunctionComponent`
@@ -605,8 +632,8 @@ More about this later!
 
 ```ts
 type AppProps = {
-  onLogin: () => void;
-};
+  onLogin: () => void
+}
 ```
 
 ```jsx
@@ -614,7 +641,7 @@ const App: FC<AppProps> = (props) => (
   <div>
     <button onClick={props.onLogin}>Login!</button>
   </div>
-);
+)
 ```
 
 ---
@@ -624,7 +651,7 @@ const App: FC<AppProps> = (props) => (
 ```jsx
 const onLogin = () => {
   // some magic happens
-};
+}
 ```
 
 ```jsx
@@ -637,8 +664,8 @@ const onLogin = () => {
 
 ```ts
 type AppProps = {
-  title: string;
-};
+  title: string
+}
 ```
 
 ```jsx
@@ -662,7 +689,15 @@ Type '{}' is not assignable to type 'Readonly<AppProps>'.
 ### Children
 
 ```jsx
-const Page: FC = (props) => <div>{props.children}</div>;
+type Props = {
+  // before React v18 this was included in the `FC` type
+  // now we need to be explicit about it
+  children?: React.ReactNode
+}
+
+const Page: FC<Props> = (props) => (
+  <div>{props.children}</div>
+)
 ```
 
 ```jsx
@@ -711,7 +746,7 @@ export const Button = props => (
 ```
 
 ```js
-import { Button } from "./button";
+import { Button } from "./button"
 ```
 
 ---
@@ -725,9 +760,9 @@ import { Button } from "./button";
 Hint: copy the existing array and add a value to it:
 
 ```ts
-const [lastLapMoment, setLastLapMoment] = useState(0);
-const [laps, setLaps] = useState<number[]>([]);
-setLaps([...laps, Date.now() - lastLapMoment]);
+const [lastLapMoment, setLastLapMoment] = useState(0)
+const [laps, setLaps] = useState<number[]>([])
+setLaps([...laps, Date.now() - lastLapMoment])
 ```
 
 Hint: use `setLastLapMoment` on start as well
@@ -742,7 +777,7 @@ Hint: use `.map()` here.
 
 ```jsx
 {
-  laps.map((lap, index) => <div>...</div>);
+  laps.map((lap, index) => <div>...</div>)
 }
 ```
 
@@ -858,7 +893,7 @@ https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0
 Props
 
 ```jsx
-const App: FC<Props> = (props) => <div>{props.title}</div>;
+const App: FC<Props> = (props) => <div>{props.title}</div>
 ```
 
 ```jsx
@@ -877,12 +912,12 @@ On mount & State
 
 ```jsx
 const App: FC<Props> = (props) => {
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState(false)
 
   useEffect(() => {
-    fetchUser().then((user) => setUser(user));
-  }, []);
-};
+    fetchUser().then((user) => setUser(user))
+  }, [])
+}
 ```
 
 ---
