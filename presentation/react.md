@@ -47,9 +47,9 @@
 
 ### What are we going to build?
 
-☣️ ➡️ [⏱](https://typescript-react-stopwatch-result.stackblitz.io)
+☣️ ➡️ [⏱](https://code-star.github.io/typescript-react-101)
 
-[https://typescript-react-stopwatch-result.stackblitz.io](https://typescript-react-stopwatch-result.stackblitz.io)
+[https://code-star.github.io/typescript-react-101](https://code-star.github.io/typescript-react-101)
 
 ---
 
@@ -349,6 +349,7 @@ const App = () => {
 Create getters and setters for:
 
 - The elapsed time: `number`
+- The start time: `number`
 - The stopwatch running state: `boolean`
 
 ```ts
@@ -361,7 +362,8 @@ const [myState, setMyState] = useState( ... )
 
 ```ts
 const [elapsedTime, setElapsedTime] = useState(0);
-const [isRunning, setIsRunning] = useState(false);
+const [startMoment, setStartMoment] = useState(0);
+const [timerRunning, setTimerRunning] = useState(false);
 ```
 
 ---
@@ -438,6 +440,8 @@ useEffect(() => {
 
 ### On props / state update
 
+> (not recommended)
+
 ```jsx
 ...
 
@@ -447,8 +451,6 @@ useEffect(() => {
 
 ...
 ```
-
-## (not recommended)
 
 ### On specific prop / state update
 
@@ -847,7 +849,7 @@ https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0
 
 ### Possible end result
 
-[➡️ Click](https://stackblitz.com/edit/typescript-react-stopwatch-result)
+[➡️ Click](https://code-star.github.io/typescript-react-101/)
 
 ---
 
