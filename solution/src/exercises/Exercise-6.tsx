@@ -18,9 +18,12 @@ export const Button = (props: ButtonProps) => {
 export const Exercise6 = () => {
   const [elapsedTime, setElapsedTime] = useState(0);
   const [startMoment, setStartMoment] = useState(0);
-  const [timerRunning, setTimerRunning] = useState(false);
+  const [timerRunning, setTimerRunning] = useState<boolean>();
 
   useEffect(() => {
+    if (typeof timerRunning === 'undefined') {
+      return;
+    }
     if (timerRunning) {
       setStartMoment(Date.now());
     } else {

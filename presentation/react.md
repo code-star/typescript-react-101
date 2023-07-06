@@ -543,6 +543,34 @@ const App = () => {
 
 ---
 
+### Exercise 4 - _Actually..._
+
+Update the states every time `timerRunning` updates
+
+```jsx
+const App = () => {
+  //initial state undefined
+  const [timerRunning, setTimerRunning] = useState()
+  const [startMoment, setStartMoment] = useState(0)
+  const [elapsedTime, setElapsedTime] = useState(0)
+
+  useEffect(() => {
+    // guard clause
+    if (typeof timerRunning === 'undefined') {
+      return;
+    }
+    if (timerRunning) {
+      setStartMoment(Date.now())
+    } else {
+      setElapsedTime(Date.now() - startMoment)
+    }
+  }, [timerRunning])
+  ...
+}
+```
+
+---
+
 ### Exercise 5
 
 - Convert the milliseconds in state to minutes and seconds and display it on the screen

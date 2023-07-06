@@ -18,12 +18,15 @@ export const Button = (props: ButtonProps) => {
 export const Exercise8 = () => {
   const [elapsedTime, setElapsedTime] = useState(0);
   const [startMoment, setStartMoment] = useState(0);
-  const [timerRunning, setTimerRunning] = useState(false);
+  const [timerRunning, setTimerRunning] = useState<boolean>();
 
   const [lastLapMoment, setLastLapMoment] = useState(0);
   const [laps, setLaps] = useState<number[]>([]);
 
   useEffect(() => {
+    if (typeof timerRunning === 'undefined') {
+      return;
+    }
     if (timerRunning) {
       setStartMoment(Date.now());
       setLastLapMoment(Date.now());

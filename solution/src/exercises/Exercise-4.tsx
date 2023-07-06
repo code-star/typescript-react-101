@@ -3,9 +3,12 @@ import { useState, useEffect } from "react";
 export const Exercise4 = () => {
   const [elapsedTime, setElapsedTime] = useState(0);
   const [startMoment, setStartMoment] = useState(0);
-  const [timerRunning, setTimerRunning] = useState(false);
+  const [timerRunning, setTimerRunning] = useState();
 
   useEffect(() => {
+    if (typeof timerRunning === 'undefined') {
+      return;
+    }
     if (timerRunning) {
       setStartMoment(Date.now());
     } else {
@@ -15,7 +18,7 @@ export const Exercise4 = () => {
 
   return (
     <div>
-      <div style={{ fontWeight: "bold" }}>00:00</div>
+      <div style={{ fontWeight: "bold" }}>{ elapsedTime }</div>
       <div>
         <button
           style={{ backgroundColor: "hotpink" }}
